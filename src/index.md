@@ -189,6 +189,19 @@ Performance concerns are usually overblown. Start with `@MainActor`, optimize on
 
 `Sendable` is Swift's way of saying "this type is safe to share between isolation domains."
 
+<div class="animation-container">
+  <div class="animation-label">Crossing isolation boundaries</div>
+  <div class="sendable-demo">
+    <div class="isolation-zone zone-a">
+      <div class="data-packet sendable">Int</div>
+      <span class="sendable-label">Sendable: Can cross</span>
+    </div>
+    <span class="boundary-arrow">→</span>
+    <div class="isolation-zone zone-b">
+    </div>
+  </div>
+</div>
+
 ### Automatically Sendable
 
 These are Sendable without any work:
