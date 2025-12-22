@@ -189,19 +189,6 @@ Performance concerns are usually overblown. Start with `@MainActor`, optimize on
 
 `Sendable` is Swift's way of saying "this type is safe to share between isolation domains."
 
-<div class="animation-container">
-  <div class="animation-label">Crossing isolation boundaries</div>
-  <div class="sendable-demo">
-    <div class="isolation-zone zone-a">
-      <div class="data-packet sendable">Int</div>
-      <span class="sendable-label">Sendable: Can cross</span>
-    </div>
-    <span class="boundary-arrow">→</span>
-    <div class="isolation-zone zone-b">
-    </div>
-  </div>
-</div>
-
 ### Automatically Sendable
 
 These are Sendable without any work:
@@ -548,8 +535,214 @@ final class MyClass: Sendable {
   </div>
 </section>
 
-<section>
+<section id="glossary">
   <div class="container">
+
+## Glossary: More Keywords You'll Encounter
+
+Beyond the core concepts, here are other Swift concurrency keywords you'll see in the wild:
+
+| Keyword | What it means |
+|---------|---------------|
+| `nonisolated` | Opts out of an actor's isolation - runs without protection |
+| `isolated` | Explicitly declares a parameter runs in an actor's context |
+| `@Sendable` | Marks a closure as safe to pass across isolation boundaries |
+| `Task.detached` | Creates a task completely separate from current context |
+| `AsyncSequence` | A sequence you can iterate with `for await` |
+| `AsyncStream` | A way to bridge callback-based code to async sequences |
+| `withCheckedContinuation` | Bridges completion handlers to async/await |
+| `Task.isCancelled` | Check if current task was cancelled |
+| `@preconcurrency` | Suppresses concurrency warnings for legacy code |
+| `GlobalActor` | Protocol for creating your own custom actors like MainActor |
+
+### When to Use Each
+
+#### nonisolated - Reading computed properties
+
+Use when you need a computed property that doesn't touch mutable state:
+
+```swift
+actor UserSession {
+    let userId: String  // Immutable, safe to read
+    var lastActivity: Date  // Mutable, needs protection
+
+    // This can be called without await
+    nonisolated var displayId: String {
+        "User: \(userId)"  // Only reads immutable data
+    }
+}
+
+// Usage
+let session = UserSession(userId: "123")
+print(session.displayId)  // No await needed!
+```
+
+#### @Sendable - Closures that cross boundaries
+
+Mark closures that will be called from a different isolation context:
+
+```swift
+@MainActor
+class ViewModel {
+    var items: [Item] = []
+
+    func processInBackground() {
+        Task.detached {
+            // This closure crosses from detached task to MainActor
+            // It must be @Sendable (Swift infers this)
+            let processed = await self.heavyProcessing()
+            await MainActor.run {
+                self.items = processed
+            }
+        }
+    }
+}
+
+// Explicit @Sendable when needed
+func runLater(_ work: @Sendable @escaping () -> Void) {
+    DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+        work()
+    }
+}
+```
+
+#### withCheckedContinuation - Bridging old APIs
+
+Convert completion-handler APIs to async/await:
+
+```swift
+// Old callback-based API
+func fetchUser(id: String, completion: @escaping (User?) -> Void) {
+    // ... network call with callback
+}
+
+// Wrapped as async
+func fetchUser(id: String) async -> User? {
+    await withCheckedContinuation { continuation in
+        fetchUser(id: id) { user in
+            continuation.resume(returning: user)
+        }
+    }
+}
+
+// For throwing functions, use withCheckedThrowingContinuation
+func fetchUserThrowing(id: String) async throws -> User {
+    try await withCheckedThrowingContinuation { continuation in
+        fetchUser(id: id) { result in
+            switch result {
+            case .success(let user):
+                continuation.resume(returning: user)
+            case .failure(let error):
+                continuation.resume(throwing: error)
+            }
+        }
+    }
+}
+```
+
+#### AsyncStream - Bridging event sources
+
+Turn delegates or callbacks into async sequences:
+
+```swift
+class LocationTracker: NSObject, CLLocationManagerDelegate {
+    private var continuation: AsyncStream<CLLocation>.Continuation?
+
+    var locations: AsyncStream<CLLocation> {
+        AsyncStream { continuation in
+            self.continuation = continuation
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager,
+                        didUpdateLocations locations: [CLLocation]) {
+        for location in locations {
+            continuation?.yield(location)
+        }
+    }
+}
+
+// Usage
+let tracker = LocationTracker()
+for await location in tracker.locations {
+    print("New location: \(location)")
+}
+```
+
+#### Task.isCancelled - Cooperative cancellation
+
+Check for cancellation in long-running work:
+
+```swift
+func processLargeDataset(_ items: [Item]) async throws -> [Result] {
+    var results: [Result] = []
+
+    for item in items {
+        // Check before each expensive operation
+        try Task.checkCancellation()  // Throws if cancelled
+
+        // Or check without throwing
+        if Task.isCancelled {
+            return results  // Return partial results
+        }
+
+        let result = await process(item)
+        results.append(result)
+    }
+
+    return results
+}
+```
+
+#### Task.detached - Escaping the current context
+
+Use sparingly - when you truly need work outside the current actor:
+
+```swift
+@MainActor
+class ImageProcessor {
+    func processImage(_ image: UIImage) {
+        // DON'T: This still inherits MainActor context
+        Task {
+            let filtered = applyFilters(image)  // Blocks main!
+        }
+
+        // DO: Detached task runs independently
+        Task.detached(priority: .userInitiated) {
+            let filtered = await self.applyFilters(image)
+            await MainActor.run {
+                self.displayImage(filtered)
+            }
+        }
+    }
+}
+```
+
+<div class="warning">
+<h4>Task.detached is usually wrong</h4>
+
+Most of the time, you want a regular `Task`. Detached tasks don't inherit priority, task-local values, or actor context. Use them only when you explicitly need that separation.
+</div>
+
+#### @preconcurrency - Living with legacy code
+
+Silence warnings when importing modules not yet updated for concurrency:
+
+```swift
+// Suppress warnings from this import
+@preconcurrency import OldFramework
+
+// Or on a protocol conformance
+class MyDelegate: @preconcurrency SomeOldDelegate {
+    // Won't warn about non-Sendable requirements
+}
+```
+
+<div class="tip">
+<h4>@preconcurrency is temporary</h4>
+
+Use it as a bridge while updating code. The goal is to eventually remove it and have proper Sendable conformance.
+</div>
 
 ## Further Reading
 
