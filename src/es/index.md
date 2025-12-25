@@ -71,12 +71,13 @@ El enfoque de Swift es diferente: **hacer imposibles los data races en tiempo de
 |----------|---------|---------------------------|
 | **Swift** | Aislamiento + Sendable | Tiempo de compilación |
 | **Rust** | Ownership + borrow checker | Tiempo de compilación |
+| **Kotlin** | Coroutines + concurrencia estructurada | Parcialmente en compilación |
 | **Go** | Channels + detector de races | Runtime (con herramientas) |
-| **Java/Kotlin** | `synchronized`, locks | Runtime (crashes) |
+| **Java** | `synchronized`, locks | Runtime (crashes) |
 | **JavaScript** | Event loop single-threaded | Evitado completamente |
 | **C/C++** | Locks manuales | Runtime (comportamiento indefinido) |
 
-Swift y Rust son los únicos lenguajes mainstream que detectan data races en tiempo de compilación. ¿El trade-off? Una curva de aprendizaje más empinada al principio. Pero una vez que entiendes el modelo, el compilador te respalda.
+Swift y Rust ofrecen las garantías más fuertes en tiempo de compilación contra data races. Kotlin Coroutines ofrece concurrencia estructurada similar al async/await de Swift, pero sin el mismo nivel de enforcement en el sistema de tipos para thread safety. ¿El trade-off? Una curva de aprendizaje más empinada al principio. Pero una vez que entiendes el modelo, el compilador te respalda.
 
 ¿Esos molestos errores sobre `Sendable` y aislamiento de actor? Están detectando bugs que antes habrían sido crashes silenciosos.
 
