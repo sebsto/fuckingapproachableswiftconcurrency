@@ -4,4 +4,4 @@
 set -e
 
 pnpm run build
-wrangler pages deploy _site --project-name=fuckingapproachableswiftconcurrency
+wrangler pages deploy _site --project-name=fucking-approachable-swift-concurrency
