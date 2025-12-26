@@ -210,18 +210,6 @@ Swift's concurrency model asks a different question. Instead of "which thread sh
 
 This is [isolation](https://developer.apple.com/documentation/swift/isolation). Rather than manually dispatching work to threads, you declare boundaries around data. The compiler enforces these boundaries at build time, not runtime.
 
-<div class="analogy">
-<h4>The Office Building</h4>
-
-Think of your app as an office building. Each **isolation domain** is a private office with a lock on the door. Only one person can be inside at a time, working with the documents in that office.
-
-- **`MainActor`** is the front desk - where all customer interactions happen. There's only one, and it handles everything the user sees.
-- **`actor`** types are department offices - Accounting, Legal, HR. Each protects its own sensitive documents.
-- **`nonisolated`** code is the hallway - shared space anyone can walk through, but no private documents live there.
-
-You can't just barge into someone's office. You knock (`await`) and wait for them to let you in.
-</div>
-
 <div class="tip">
 <h4>Under the hood</h4>
 
@@ -302,6 +290,18 @@ func updateUI() async { }
 @concurrent func processLargeFile() async { }</code></pre>
 </div>
 
+<div class="analogy">
+<h4>The Office Building</h4>
+
+Think of your app as an office building. Each **isolation domain** is a private office with a lock on the door. Only one person can be inside at a time, working with the documents in that office.
+
+- **`MainActor`** is the front desk - where all customer interactions happen. There's only one, and it handles everything the user sees.
+- **`actor`** types are department offices - Accounting, Legal, HR. Each protects its own sensitive documents.
+- **`nonisolated`** code is the hallway - shared space anyone can walk through, but no private documents live there.
+
+You can't just barge into someone's office. You knock (`await`) and wait for them to let you in.
+</div>
+
   </div>
 </section>
 
@@ -313,17 +313,6 @@ func updateUI() async { }
 Isolation domains protect data, but eventually you need to pass data between them. When you do, Swift checks if it's safe.
 
 Think about it: if you pass a reference to a mutable class from one actor to another, both actors could modify it simultaneously. That's exactly the data race we're trying to prevent. So Swift needs to know: can this data be safely shared?
-
-<div class="analogy">
-<h4>Photocopies vs. Original Documents</h4>
-
-Back to the office building. When you need to share information between departments:
-
-- **Photocopies are safe** - If Legal makes a copy of a document and sends it to Accounting, both have their own copy. They can scribble on them, modify them, whatever. No conflict.
-- **Original signed contracts must stay put** - If two departments could both modify the original, chaos ensues. Who has the real version?
-
-`Sendable` types are like photocopies: safe to share because each place gets its own independent copy (value types) or because they're immutable (nobody can modify them). Non-`Sendable` types are like original contracts: passing them around creates the potential for conflicting modifications.
-</div>
 
 The answer is the [`Sendable`](https://developer.apple.com/documentation/swift/sendable) protocol. It's a marker that tells the compiler "this type is safe to pass across isolation boundaries":
 
@@ -387,6 +376,17 @@ With [Approachable Concurrency](https://www.swift.org/documentation/articles/swi
 Your code runs on MainActor unless you explicitly opt out. When you do need parallelism, mark functions `@concurrent` and then think about Sendable.
 </div>
 
+<div class="analogy">
+<h4>Photocopies vs. Original Documents</h4>
+
+Back to the office building. When you need to share information between departments:
+
+- **Photocopies are safe** - If Legal makes a copy of a document and sends it to Accounting, both have their own copy. They can scribble on them, modify them, whatever. No conflict.
+- **Original signed contracts must stay put** - If two departments could both modify the original, chaos ensues. Who has the real version?
+
+`Sendable` types are like photocopies: safe to share because each place gets its own independent copy (value types) or because they're immutable (nobody can modify them). Non-`Sendable` types are like original contracts: passing them around creates the potential for conflicting modifications.
+</div>
+
   </div>
 </section>
 
@@ -396,14 +396,6 @@ Your code runs on MainActor unless you explicitly opt out. When you do need para
 ## [How Isolation Is Inherited](#isolation-inheritance)
 
 You've seen that isolation domains protect data, and Sendable controls what crosses between them. But how does code end up in an isolation domain in the first place?
-
-<div class="analogy">
-<h4>Walking Through the Building</h4>
-
-When you're in the front desk office (MainActor), and you call someone to help you, they come to *your* office. They inherit your location. If you create a task ("go do this for me"), that assistant starts in your office too.
-
-The only way someone ends up in a different office is if they explicitly go there: "I need to work in Accounting for this" (`actor`), or "I'll handle this in the back office" (`@concurrent`).
-</div>
 
 When you call a function or create a closure, isolation flows through your code. With [Approachable Concurrency](https://www.swift.org/documentation/articles/swift-6.2-release-notes.html), your app starts on [`MainActor`](https://developer.apple.com/documentation/swift/mainactor), and that isolation propagates to the code you call, unless something explicitly changes it. Understanding this flow helps you predict where code runs and why the compiler sometimes complains.
 
@@ -479,6 +471,14 @@ class ViewModel {
 <h4>Task.detached is usually wrong</h4>
 
 The Swift team recommends [Task.detached as a last resort](https://forums.swift.org/t/revisiting-when-to-use-task-detached/57929). It doesn't inherit priority, task-local values, or actor context. Most of the time, regular `Task` is what you want. If you need CPU-intensive work off the main actor, mark the function `@concurrent` instead.
+</div>
+
+<div class="analogy">
+<h4>Walking Through the Building</h4>
+
+When you're in the front desk office (MainActor), and you call someone to help you, they come to *your* office. They inherit your location. If you create a task ("go do this for me"), that assistant starts in your office too.
+
+The only way someone ends up in a different office is if they explicitly go there: "I need to work in Accounting for this" (`actor`), or "I'll handle this in the back office" (`@concurrent`).
 </div>
 
   </div>
