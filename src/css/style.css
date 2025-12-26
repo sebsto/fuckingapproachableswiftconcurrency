@@ -295,6 +295,7 @@ p {
   padding: 1.5rem;
   margin: 2rem 0;
   border-radius: 4px;
+  overflow: hidden;
 }
 
 .warning h4 {
@@ -313,6 +314,7 @@ p {
   padding: 1.5rem;
   margin: 2rem 0;
   border-radius: 4px;
+  overflow: hidden;
 }
 
 .tip h4 {
@@ -323,6 +325,25 @@ p {
 .tip code {
   background: oklch(0.88 0.06 145);
   color: oklch(0.35 0.12 145);
+}
+
+.tip pre,
+.warning pre {
+  margin: 1.5rem 0 0 0;
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  border-top: 1px solid rgba(74, 156, 93, 0.3);
+}
+
+.warning pre {
+  border-top-color: rgba(250, 189, 47, 0.3);
+}
+
+.tip pre code,
+.warning pre code {
+  background: transparent;
+  padding: 0;
 }
 
 /* Analogy Boxes - Office Building Theme */
