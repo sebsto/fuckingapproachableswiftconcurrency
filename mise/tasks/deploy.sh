@@ -1,7 +1,7 @@
 #!/bin/bash
-# mise description="Deploy the website to Cloudflare Pages"
+#MISE description="Deploy the website to Cloudflare Pages"
 
 set -e
 
 pnpm run build
-wrangler pages deploy dist --project-name=fuckingapproachableswiftconcurrency
+wrangler pages deploy _site --project-name=fuckingapproachableswiftconcurrency
