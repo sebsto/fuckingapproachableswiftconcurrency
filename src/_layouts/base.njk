@@ -83,12 +83,9 @@
     <div class="container">
       <a href="/{{ lang | default('en') }}/" class="logo">{{ logoText | default('Fucking Approachable Swift Concurrency') }}</a>
       <nav>
-        <a href="#basics">{{ nav.isolation | default('Isolation') }}</a>
-        <a href="#domains">{{ nav.domains | default('Domains') }}</a>
-        <a href="#sendable">Sendable</a>
-        <a href="#async-await">Async/Await</a>
-        <a href="#patterns">{{ nav.patterns | default('Patterns') }}</a>
-        <a href="#errors">{{ nav.errors | default('Errors') }}</a>
+        {% for key, label in nav %}
+        <a href="#{{ key }}">{{ label }}</a>
+        {% endfor %}
       </nav>
       <div class="language-selector">
         <button class="language-toggle" aria-label="Select language" aria-expanded="false">
