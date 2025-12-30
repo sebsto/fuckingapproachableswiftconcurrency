@@ -15,6 +15,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "peterspath",
+      "name": "Peter's Path",
+      "avatar_url": "https://avatars.githubusercontent.com/u/211143281?v=4",
+      "profile": "https://peterspath.net",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
