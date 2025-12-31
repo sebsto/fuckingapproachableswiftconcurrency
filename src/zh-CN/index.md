@@ -13,6 +13,8 @@ nav:
   mistakes: 常见坑
 footer:
   madeWith: 用挫折和爱制作。因为 Swift 并发不必令人困惑。
+  tradition: 延续以下传统
+  traditionAnd: 和
   viewOnGitHub: 在 GitHub 上查看
 ---
 
@@ -20,8 +22,7 @@ footer:
   <div class="container">
     <h1>该死的易懂<br><span class="accent">Swift 并发</span></h1>
     <p class="subtitle">终于能理解 async/await、Tasks,以及为什么编译器老是冲你嚷嚷了。</p>
-    <p class="credit">特别感谢 <a href="https://www.massicotte.org/">Matt Massicotte</a> 让 Swift 并发变得易于理解。由 <a href="https://pepicrft.me">Pedro Piñera</a> 整理。发现问题?<a href="mailto:pedro@tuist.dev">pedro@tuist.dev</a></p>
-    <p class="tribute">延续 <a href="https://fuckingblocksyntax.com/">fuckingblocksyntax.com</a> 和 <a href="https://fuckingifcaseletsyntax.com/">fuckingifcaseletsyntax.com</a> 的传统</p>
+    <p class="credit">特别感谢 <a href="https://www.massicotte.org/">Matt Massicotte</a> 让 Swift 并发变得易于理解。由 <a href="https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=author">Tuist</a> 联合创始人 <a href="https://pepicrft.me">Pedro Piñera</a> 整理。发现问题？<a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/issues/new">提交 Issue</a> 或 <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/pulls">发送 PR</a>。</p>
   </div>
 </section>
 
@@ -666,6 +667,12 @@ func fetchAll() async {
 - [Swift 并发文档](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/)
 - [WWDC21: 认识 async/await](https://developer.apple.com/videos/play/wwdc2021/10132/)
 - [WWDC21: 用 actors 保护可变状态](https://developer.apple.com/videos/play/wwdc2021/10133/)
+</div>
+
+<div class="resources">
+<h4>工具</h4>
+
+- [Tuist](https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=tools) - 让大型团队和代码库开发更快
 </div>
 
   </div>

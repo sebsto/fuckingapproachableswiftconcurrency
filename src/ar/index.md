@@ -13,6 +13,8 @@ nav:
   mistakes: الأخطاء الشائعة
 footer:
   madeWith: صُنع بالإحباط والحب. لأن تزامن Swift لا يجب أن يكون مربكاً.
+  tradition: في تقليد
+  traditionAnd: و
   viewOnGitHub: عرض على GitHub
 ---
 
@@ -20,8 +22,7 @@ footer:
   <div class="container">
     <h1>دليل سهل جداً<br><span class="accent">لتزامن Swift</span></h1>
     <p class="subtitle">افهم أخيراً async/await والمهام ولماذا المترجم يصرخ عليك.</p>
-    <p class="credit">شكر كبير لـ <a href="https://www.massicotte.org/">Matt Massicotte</a> لجعل تزامن Swift مفهوماً. من إعداد <a href="https://pepicrft.me">Pedro Piñera</a>. وجدت مشكلة؟ <a href="mailto:pedro@tuist.dev">pedro@tuist.dev</a></p>
-    <p class="tribute">في تقليد <a href="https://fuckingblocksyntax.com/">fuckingblocksyntax.com</a> و <a href="https://fuckingifcaseletsyntax.com/">fuckingifcaseletsyntax.com</a></p>
+    <p class="credit">شكر كبير لـ <a href="https://www.massicotte.org/">Matt Massicotte</a> لجعل تزامن Swift مفهوماً. من إعداد <a href="https://pepicrft.me">Pedro Piñera</a>، مؤسس مشارك لـ <a href="https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=author">Tuist</a>. وجدت مشكلة؟ <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/issues/new">افتح issue</a> أو <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/pulls">أرسل PR</a>.</p>
   </div>
 </section>
 
@@ -666,6 +667,12 @@ func fetchAll() async {
 - [توثيق تزامن Swift](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/)
 - [WWDC21: تعرف على async/await](https://developer.apple.com/videos/play/wwdc2021/10132/)
 - [WWDC21: احمِ الحالة القابلة للتغيير مع actors](https://developer.apple.com/videos/play/wwdc2021/10133/)
+</div>
+
+<div class="resources">
+<h4>أدوات</h4>
+
+- [Tuist](https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=tools) - طوّر أسرع مع فرق ومشاريع أكبر
 </div>
 
   </div>

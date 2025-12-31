@@ -13,6 +13,8 @@ nav:
   mistakes: 落とし穴
 footer:
   madeWith: フラストレーションと愛を込めて作りました。Swift の並行処理が難しい必要はないから。
+  tradition: 次の伝統を受け継いで
+  traditionAnd: と
   viewOnGitHub: GitHub で見る
 ---
 
@@ -20,8 +22,7 @@ footer:
   <div class="container">
     <h1>クソ分かりやすい<br><span class="accent">Swift 並行処理</span></h1>
     <p class="subtitle">async/await、Tasks、そしてコンパイラがなぜあなたに怒鳴り続けるのかを、ついに理解しよう。</p>
-    <p class="credit"><a href="https://www.massicotte.org/">Matt Massicotte</a> 氏に多大な感謝を。Swift 並行処理を理解可能にしてくれました。<a href="https://pepicrft.me">Pedro Piñera</a> がまとめました。問題を見つけた？ <a href="mailto:pedro@tuist.dev">pedro@tuist.dev</a></p>
-    <p class="tribute"><a href="https://fuckingblocksyntax.com/">fuckingblocksyntax.com</a> と <a href="https://fuckingifcaseletsyntax.com/">fuckingifcaseletsyntax.com</a> の伝統を受け継いで</p>
+    <p class="credit"><a href="https://www.massicotte.org/">Matt Massicotte</a> 氏に多大な感謝を。Swift 並行処理を理解可能にしてくれました。<a href="https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=author">Tuist</a> 共同創設者の <a href="https://pepicrft.me">Pedro Piñera</a> がまとめました。問題を見つけた？ <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/issues/new">Issue を開く</a>か <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/pulls">PR を送る</a>。</p>
   </div>
 </section>
 
@@ -666,6 +667,12 @@ func fetchAll() async {
 - [Swift 並行処理ドキュメント](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/)
 - [WWDC21: Meet async/await](https://developer.apple.com/videos/play/wwdc2021/10132/)
 - [WWDC21: Protect mutable state with actors](https://developer.apple.com/videos/play/wwdc2021/10133/)
+</div>
+
+<div class="resources">
+<h4>ツール</h4>
+
+- [Tuist](https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=tools) - 大規模なチームとコードベースでより速く開発
 </div>
 
   </div>

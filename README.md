@@ -15,13 +15,16 @@ In the tradition of [fuckingblocksyntax.com](https://fuckingblocksyntax.com/) an
 
 ## Topics Covered
 
-- **Isolation** - The core mental model for Swift concurrency
 - **Async/Await** - Suspension vs blocking, and why it matters
-- **Actors** - When to use them (and when not to)
-- **MainActor** - Your best friend for UI code
-- **Sendable** - The thread-safety certificate
-- **Common Patterns** - Network requests, parallel work, preventing double-taps
+- **Tasks** - Managing async work with Task and TaskGroup
+- **Isolation** - The core mental model for Swift concurrency (MainActor, actors, nonisolated)
+- **Sendable** - What can safely cross isolation boundaries
+- **Isolation Inheritance** - How isolation flows through your code
 - **Common Mistakes** - And how to avoid them
+
+## Languages
+
+Available in 10 languages: English, Spanish, Portuguese (BR & PT), Arabic, Korean, Japanese, Chinese (Simplified & Traditional), and Russian.
 
 ## Development
 

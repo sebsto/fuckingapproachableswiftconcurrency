@@ -20,8 +20,7 @@ footer:
   <div class="container">
     <h1>Fucking Approachable<br><span class="accent">Swift Concurrency</span></h1>
     <p class="subtitle">Finally understand async/await, Tasks, and why the compiler keeps yelling at you.</p>
-    <p class="credit">Huge thanks to <a href="https://www.massicotte.org/">Matt Massicotte</a> for making Swift concurrency understandable. Put together by <a href="https://pepicrft.me">Pedro Piñera</a>. Found an issue? <a href="mailto:pedro@tuist.dev">pedro@tuist.dev</a></p>
-    <p class="tribute">In the tradition of <a href="https://fuckingblocksyntax.com/">fuckingblocksyntax.com</a> and <a href="https://fuckingifcaseletsyntax.com/">fuckingifcaseletsyntax.com</a></p>
+    <p class="credit">Huge thanks to <a href="https://www.massicotte.org/">Matt Massicotte</a> for making Swift concurrency understandable. Put together by <a href="https://pepicrft.me">Pedro Piñera</a>, co-founder of <a href="https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=author">Tuist</a>. Found an issue? <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/issues/new">Open an issue</a> or <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/pulls">submit a PR</a>.</p>
   </div>
 </section>
 
@@ -666,6 +665,12 @@ If you're already in an async context, prefer structured concurrency (`async let
 - [Swift Concurrency Documentation](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/)
 - [WWDC21: Meet async/await](https://developer.apple.com/videos/play/wwdc2021/10132/)
 - [WWDC21: Protect mutable state with actors](https://developer.apple.com/videos/play/wwdc2021/10133/)
+</div>
+
+<div class="resources">
+<h4>Tools</h4>
+
+- [Tuist](https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=tools) - Ship faster with larger teams and codebases
 </div>
 
   </div>

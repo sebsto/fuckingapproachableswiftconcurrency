@@ -13,6 +13,8 @@ nav:
   mistakes: Armadilhas
 footer:
   madeWith: Feito com frustração e amor. Porque concorrência em Swift não precisa ser confusa.
+  tradition: Na tradição de
+  traditionAnd: e
   viewOnGitHub: Ver no GitHub
 ---
 
@@ -20,8 +22,7 @@ footer:
   <div class="container">
     <h1>Pra Caralho Acessível<br><span class="accent">Swift Concurrency</span></h1>
     <p class="subtitle">Finalmente entenda async/await, Tasks, e por que o compilador não para de reclamar com você.</p>
-    <p class="credit">Enorme agradecimento a <a href="https://www.massicotte.org/">Matt Massicotte</a> por tornar a concorrência em Swift compreensível. Compilado por <a href="https://pepicrft.me">Pedro Piñera</a>. Encontrou um problema? <a href="mailto:pedro@tuist.dev">pedro@tuist.dev</a></p>
-    <p class="tribute">Na tradição de <a href="https://fuckingblocksyntax.com/">fuckingblocksyntax.com</a> e <a href="https://fuckingifcaseletsyntax.com/">fuckingifcaseletsyntax.com</a></p>
+    <p class="credit">Enorme agradecimento a <a href="https://www.massicotte.org/">Matt Massicotte</a> por tornar a concorrência em Swift compreensível. Compilado por <a href="https://pepicrft.me">Pedro Piñera</a>, co-fundador do <a href="https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=author">Tuist</a>. Encontrou um problema? <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/issues/new">Abra uma issue</a> ou <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/pulls">envie um PR</a>.</p>
   </div>
 </section>
 
@@ -666,6 +667,12 @@ Se você já está em um contexto async, prefira concorrência estruturada (`asy
 - [Swift Concurrency Documentation](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/)
 - [WWDC21: Meet async/await](https://developer.apple.com/videos/play/wwdc2021/10132/)
 - [WWDC21: Protect mutable state with actors](https://developer.apple.com/videos/play/wwdc2021/10133/)
+</div>
+
+<div class="resources">
+<h4>Ferramentas</h4>
+
+- [Tuist](https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=tools) - Desenvolva mais rápido com equipes e projetos maiores
 </div>
 
   </div>

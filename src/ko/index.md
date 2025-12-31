@@ -13,6 +13,8 @@ nav:
   mistakes: 함정
 footer:
   madeWith: 좌절과 사랑으로 만들었습니다. Swift 동시성이 혼란스러울 필요는 없으니까요.
+  tradition: 다음의 전통을 따릅니다
+  traditionAnd: 과
   viewOnGitHub: GitHub에서 보기
 ---
 
@@ -20,8 +22,7 @@ footer:
   <div class="container">
     <h1>빌어먹게 쉬운<br><span class="accent">Swift 동시성</span></h1>
     <p class="subtitle">드디어 async/await, Tasks, 그리고 왜 컴파일러가 계속 소리 지르는지 이해하세요.</p>
-    <p class="credit"><a href="https://www.massicotte.org/">Matt Massicotte</a>에게 큰 감사를 드립니다. Swift 동시성을 이해할 수 있게 만들어주셨습니다. <a href="https://pepicrft.me">Pedro Piñera</a>가 정리했습니다. 오류를 발견하셨나요? <a href="mailto:pedro@tuist.dev">pedro@tuist.dev</a></p>
-    <p class="tribute"><a href="https://fuckingblocksyntax.com/">fuckingblocksyntax.com</a>과 <a href="https://fuckingifcaseletsyntax.com/">fuckingifcaseletsyntax.com</a>의 전통을 따릅니다</p>
+    <p class="credit"><a href="https://www.massicotte.org/">Matt Massicotte</a>에게 큰 감사를 드립니다. Swift 동시성을 이해할 수 있게 만들어주셨습니다. <a href="https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=author">Tuist</a>의 공동 창립자 <a href="https://pepicrft.me">Pedro Piñera</a>가 정리했습니다. 오류를 발견하셨나요? <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/issues/new">이슈 열기</a> 또는 <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/pulls">PR 제출</a>.</p>
   </div>
 </section>
 
@@ -666,6 +667,12 @@ func fetchAll() async {
 - [Swift Concurrency Documentation](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/)
 - [WWDC21: Meet async/await](https://developer.apple.com/videos/play/wwdc2021/10132/)
 - [WWDC21: Protect mutable state with actors](https://developer.apple.com/videos/play/wwdc2021/10133/)
+</div>
+
+<div class="resources">
+<h4>도구</h4>
+
+- [Tuist](https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=tools) - 더 큰 팀과 코드베이스로 더 빠르게 개발하세요
 </div>
 
   </div>

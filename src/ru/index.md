@@ -13,6 +13,8 @@ nav:
   mistakes: Подводные камни
 footer:
   madeWith: Сделано с разочарованием и любовью. Потому что конкурентность Swift не должна быть запутанной.
+  tradition: В традициях
+  traditionAnd: и
   viewOnGitHub: Смотреть на GitHub
 ---
 
@@ -20,8 +22,7 @@ footer:
   <div class="container">
     <h1>Чертовски понятный<br><span class="accent">Swift Concurrency</span></h1>
     <p class="subtitle">Наконец-то поймите async/await, Tasks и почему компилятор постоянно на вас ругается.</p>
-    <p class="credit">Огромная благодарность <a href="https://www.massicotte.org/">Matt Massicotte</a> за то, что сделал конкурентность Swift понятной. Составлено <a href="https://pepicrft.me">Pedro Piñera</a>. Нашли ошибку? <a href="mailto:pedro@tuist.dev">pedro@tuist.dev</a></p>
-    <p class="tribute">В традициях <a href="https://fuckingblocksyntax.com/">fuckingblocksyntax.com</a> и <a href="https://fuckingifcaseletsyntax.com/">fuckingifcaseletsyntax.com</a></p>
+    <p class="credit">Огромная благодарность <a href="https://www.massicotte.org/">Matt Massicotte</a> за то, что сделал конкурентность Swift понятной. Составлено <a href="https://pepicrft.me">Pedro Piñera</a>, сооснователем <a href="https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=author">Tuist</a>. Нашли ошибку? <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/issues/new">Откройте issue</a> или <a href="https://github.com/pepicrft/fuckingapproachableswiftconcurrency/pulls">отправьте PR</a>.</p>
   </div>
 </section>
 
@@ -666,6 +667,12 @@ func fetchAll() async {
 - [Swift Concurrency Documentation](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/)
 - [WWDC21: Meet async/await](https://developer.apple.com/videos/play/wwdc2021/10132/)
 - [WWDC21: Protect mutable state with actors](https://developer.apple.com/videos/play/wwdc2021/10133/)
+</div>
+
+<div class="resources">
+<h4>Инструменты</h4>
+
+- [Tuist](https://tuist.dev?utm_source=fuckingapproachableswiftconcurrency&utm_medium=website&utm_campaign=tools) - Разрабатывайте быстрее с большими командами и кодовыми базами
 </div>
 
   </div>
